@@ -69,6 +69,7 @@ function App() {
     onChildAdded(chatListRef, (data) => {
       // console.log (data.val ())
       setChats((chats) => [...chats, data.val()]);
+      audioplay ();
 
       setTimeout (() => {
         Updateheight();
@@ -91,10 +92,11 @@ function App() {
     set(chatRef, {
       user,
       message: msg,
+      timestamp: new Date ().toISOString()
     });
     }, 500)
 
-    audioplay ();
+    // audioplay ();
 
     // audio.play();
 
@@ -132,6 +134,8 @@ function App() {
         <div>
           <h2>
             Name: <span id="username">{user.name}</span>
+            <br />
+            Email: <span id="username1">{user.email}</span>
           </h2>
           <div id="chat" className="chat-container">
             {chats.map((c, i) => (
@@ -141,9 +145,14 @@ function App() {
                   c.user.email === user.email ? "me" : ""
                 }`}
               >
+                
                 <p className="chatbox">
                   <strong> {c.user.name}:</strong>
                   <span> {c.message}</span>
+                  <br />
+                  <small style={{color: "#f9ff00"}}>
+                  {c.timestamp ? new Date (c.timestamp).toLocaleString () : "No timestramp"}
+                </small>
                 </p>
               </div>
             ))}
@@ -159,7 +168,7 @@ function App() {
             <button onClick={(e) => sendChat()}>Send</button>
           </div>
         </div>
-     ) : null}
+      ) : null}
     </>
   );
 }

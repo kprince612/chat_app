@@ -200,7 +200,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #7cdc8b;
+  background-color: #8be3e6;
 }
 
 .cont1 {
@@ -368,4 +368,11 @@ h2 {
   width: 125px;
   border-radius: 15px;
   margin-bottom: 15px;
+}
+
+#username1 {
+  font-size: 26px;
+  color: cadetblue;
+  text-decoration: underline;
+  font-weight: bold;
 }
